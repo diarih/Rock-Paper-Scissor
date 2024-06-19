@@ -3,9 +3,11 @@ import './App.css'
 function App() {
 
   return (
-    <>
-      Plain
-    </>
+    <div className={"containerBG"}>
+      <div className={"container mx-auto p-4"}>
+        Test
+      </div>
+    </div>
   )
 }
 
