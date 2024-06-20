@@ -10,12 +10,6 @@
     color: white;
 }
 
-.barlow-semi-condensed-light {
-    font-family: var(--font-family);
-    font-weight: 300;
-    font-style: normal;
-}
-
 .containerBG {
     min-height: 100vh;
     background: radial-gradient(hsl(214, 47%, 23%),hsl(237, 49%, 15%));
