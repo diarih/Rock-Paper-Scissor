@@ -8,8 +8,8 @@ export const ScoreContext = createContext(null)
 
 function App() {
 
-  const [score, setScore] = useState(0)
-  
+  const [score, setScore] = useState(localStorage.getItem('score') || 0)
+
   return (
     <div className={"containerBG"}>
       <div className={"container h-screen mx-auto p-12 flex items-center flex-col w-full gap-12"}>

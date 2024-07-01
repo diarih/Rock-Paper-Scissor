@@ -7,9 +7,9 @@ import {ScoreContext} from "../App.jsx";
 
 const list = ['paper', 'scissor', 'rock'];
 const choices = {
-  rock: { name: 'Rock', beats: 'scissor' },
-  paper: { name: 'Paper', beats: 'rock' },
-  scissor: { name: 'Scissors', beats: 'paper' },
+  rock: {name: 'Rock', beats: 'scissor'},
+  paper: {name: 'Paper', beats: 'rock'},
+  scissor: {name: 'Scissors', beats: 'paper'},
 };
 
 const determineWinner = (playerChoice, houseChoice) => {
@@ -56,8 +56,9 @@ const Picked = ({pick, onReset}) => {
 
     const gameResult = determineWinner(pick, matchHouse);
     if (gameResult === 'win') {
-      console.log('you win');
-      setScore(score + 1);
+      let scoreUp = score + 1
+      setScore(scoreUp);
+      localStorage.setItem('score', scoreUp)
     }
     setResult(gameResult);
   };
@@ -74,7 +75,7 @@ const Picked = ({pick, onReset}) => {
       <div>
         <p className={'text-center mb-8 uppercase font-semibold'}>You Picked</p>
         <div>
-          <ChooseButton icon={Icons[pick]?.icon} colorBorder={Icons[pick]?.color} />
+          <ChooseButton icon={Icons[pick]?.icon} colorBorder={Icons[pick]?.color}/>
         </div>
       </div>
       {house && (
@@ -93,7 +94,7 @@ const Picked = ({pick, onReset}) => {
           {loading ? (
             <div className="animate-ping mt-14 md:h-20 md:w-20 h-16 w-16 rounded-full bg-sky-400 opacity-75"></div>
           ) : (
-            <ChooseButton icon={house.icon} colorBorder={house.color} />
+            <ChooseButton icon={house.icon} colorBorder={house.color}/>
           )}
         </div>
       </div>
