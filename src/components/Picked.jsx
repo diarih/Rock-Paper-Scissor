@@ -56,7 +56,7 @@ const Picked = ({pick, onReset}) => {
 
     const gameResult = determineWinner(pick, matchHouse);
     if (gameResult === 'win') {
-      let scoreUp = score + 1
+      let scoreUp =parseInt(score) + 1
       setScore(scoreUp);
       localStorage.setItem('score', scoreUp)
     }
