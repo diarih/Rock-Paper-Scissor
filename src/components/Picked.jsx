@@ -56,7 +56,7 @@ const Picked = ({pick, onReset}) => {
 
     const gameResult = determineWinner(pick, matchHouse);
     if (gameResult === 'win') {
-      let scoreUp =parseInt(score) + 1
+      let scoreUp = parseInt(score) + 1
       setScore(scoreUp);
       localStorage.setItem('score', scoreUp)
     }
@@ -71,15 +71,37 @@ const Picked = ({pick, onReset}) => {
   }, []);
 
   return (
-    <div className={'flex gap-14 p-4'}>
-      <div>
-        <p className={'text-center mb-8 uppercase font-semibold'}>You Picked</p>
+    <div className={'space-y-5'}>
+      <div className={'flex lg:gap-14 gap-2 lg:p-4 p-1'}>
         <div>
-          <ChooseButton icon={Icons[pick]?.icon} colorBorder={Icons[pick]?.color}/>
+          <p className={'text-center mb-8 uppercase font-semibold'}>You Picked</p>
+          <div>
+            <ChooseButton icon={Icons[pick]?.icon} colorBorder={Icons[pick]?.color}/>
+          </div>
+        </div>
+        {house && (
+          <div className={'hidden lg:flex flex-col gap-4 items-center justify-center transition'}>
+            <p className={'lg:text-4xl font-bold uppercase'}>YOU {result}</p>
+            <button
+              onClick={onReset}
+              className={'rounded p-8 w-full py-4 bg-white hover:text-red-500 text-gray-700 transition uppercase font-semibold text-xs'}>
+              play again
+            </button>
+          </div>
+        )}
+        <div>
+          <p className={'text-center mb-8 uppercase font-semibold'}>The House Picked</p>
+          <div className={'flex items-center justify-center'}>
+            {loading ? (
+              <div className="animate-ping mt-14 md:h-20 md:w-20 h-16 w-16 rounded-full bg-sky-400 opacity-75"></div>
+            ) : (
+              <ChooseButton icon={house.icon} colorBorder={house.color}/>
+            )}
+          </div>
         </div>
       </div>
       {house && (
-        <div className={'flex flex-col gap-4 items-center justify-center transition'}>
+        <div className={'flex lg:hidden flex-col gap-4 items-center justify-center transition'}>
           <p className={'text-4xl font-bold uppercase'}>YOU {result}</p>
           <button
             onClick={onReset}
@@ -88,16 +110,6 @@ const Picked = ({pick, onReset}) => {
           </button>
         </div>
       )}
-      <div>
-        <p className={'text-center mb-8 uppercase font-semibold'}>The House Picked</p>
-        <div className={'flex items-center justify-center'}>
-          {loading ? (
-            <div className="animate-ping mt-14 md:h-20 md:w-20 h-16 w-16 rounded-full bg-sky-400 opacity-75"></div>
-          ) : (
-            <ChooseButton icon={house.icon} colorBorder={house.color}/>
-          )}
-        </div>
-      </div>
     </div>
   );
 };

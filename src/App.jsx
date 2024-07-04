@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className={"containerBG"}>
-      <div className={"container h-screen mx-auto p-12 flex items-center flex-col w-full gap-12"}>
+      <div className={"container h-screen mx-auto lg:p-12 p-2 flex items-center flex-col w-full gap-12"}>
         <ScoreContext.Provider value={[score, setScore]}>
           <Header/>
           <MainMenu/>

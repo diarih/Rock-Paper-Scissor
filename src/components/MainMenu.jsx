@@ -12,7 +12,7 @@ const MainMenu = () => {
     setPick(val)
   }
   return (
-    <div className={'relative p-12'}>
+    <div className={`relative ${pick ? 'p-0' : 'p-12'}`}>
       {!pick ? (
         <div>
           <div>
